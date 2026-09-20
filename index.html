@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Obsidian Circle - Credential Generator</title>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <!-- html2canvas CDN for downloading the card as PNG -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <h1>CREDENTIAL GENERATOR</h1>
+            <p>The Obsidian Circle</p>
+        </header>
+
+        <!-- EDITOR SECTION -->
+        <section class="editor-panel">
+            <div class="form-group">
+                <label for="input-codename">CODENAME</label>
+                <input type="text" id="input-codename" value="NEO">
+            </div>
+
+            <div class="form-group">
+                <label for="input-id">MEMBER ID</label>
+                <input type="text" id="input-id" value="OC-TC-001">
+            </div>
+
+            <div class="form-group">
+                <label for="input-rank">RANK</label>
+                <select id="input-rank">
+                    <option value="INITIATE" data-symbol="◇">INITIATE</option>
+                    <option value="MEMBER" data-symbol="○">MEMBER</option>
+                    <option value="SPECIALIST" data-symbol="△">SPECIALIST</option>
+                    <option value="COUNCIL" data-symbol="◈">COUNCIL</option>
+                    <option value="TRUE COUNCIL" data-symbol="◆" selected>TRUE COUNCIL</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="input-status">STATUS</label>
+                <input type="text" id="input-status" value="ACTIVE">
+            </div>
+
+            <div class="form-group">
+                <label for="input-date">JOIN DATE</label>
+                <input type="text" id="input-date" value="SEPTEMBER 2026">
+            </div>
+
+            <button id="download-btn" class="primary-btn">DOWNLOAD CARD</button>
+        </section>
+
+        <!-- CARD PREVIEW SECTION -->
+        <!-- The scaler wrapper ensures the 800x500 card fits on a mobile screen visually, but exports at high resolution -->
+        <section class="card-scaler" id="card-scaler">
+            <div class="card" id="membership-card">
+                <!-- Large background emblem watermark -->
+                <div class="card-watermark">◈</div>
+
+                <!-- Top Header -->
+                <div class="card-header">
+                    <div class="brand">
+                        <span class="symbol">◈</span> THE OBSIDIAN CIRCLE
+                    </div>
+                    <div class="motto">KNOWLEDGE. UNITY. PURPOSE.</div>
+                </div>
+
+                <!-- Main Rank -->
+                <div class="card-rank">
+                    <span id="card-rank-symbol" class="rank-symbol">◆</span> 
+                    <span id="card-rank-text">TRUE COUNCIL</span>
+                </div>
+
+                <!-- Member Information Grid -->
+                <div class="card-info">
+                    <div class="info-block">
+                        <div class="info-label">CODENAME</div>
+                        <div class="info-value" id="card-codename">NEO</div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-label">MEMBER ID</div>
+                        <div class="info-value" id="card-id">OC-TC-001</div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-label">STATUS</div>
+                        <div class="info-value" id="card-status">ACTIVE</div>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-label">JOINED</div>
+                        <div class="info-value" id="card-date">SEPTEMBER 2026</div>
+                    </div>
+                </div>
+
+                <!-- The Five Principles -->
+                <div class="card-principles">
+                    <div class="principles-title">THE FIVE PRINCIPLES</div>
+                    <div class="principles-list">
+                        Respect <span class="dot">•</span> 
+                        Voluntary Membership <span class="dot">•</span> 
+                        No Harm <span class="dot">•</span> 
+                        Build, Don't Destroy <span class="dot">•</span> 
+                        Integrity
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="card-footer">
+                    <div class="footer-quote">“QUESTION. LEARN. BUILD.”</div>
+                    <div class="footer-signature">◎ FOUNDER</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
+  
