@@ -1,0 +1,283 @@
+/* GLOBAL SETTINGS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #050505; /* Deep obsidian background */
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 20px;
+}
+
+/* APP LAYOUT */
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.app-header {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.app-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: #c0c0c0;
+}
+
+.app-header p {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* MOBILE-FRIENDLY EDITOR PANEL */
+.editor-panel {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.form-group input, .form-group select {
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 15px; /* Large padding for touch targets */
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #888;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #2a2a2a, #111);
+    border: 1px solid #444;
+    color: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.primary-btn:active {
+    background: #000;
+    border-color: #666;
+}
+
+/* 
+  CARD SCALER 
+  This keeps the card at a fixed 800x500 size for high-quality PNG export, 
+  but visually scales it down using JS to fit your Android screen.
+*/
+.card-scaler {
+    width: 100%;
+    aspect-ratio: 1.6; /* 800 / 500 */
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+/* THE CARD DESIGN */
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 500px;
+    transform-origin: top left;
+    background: radial-gradient(circle at 50% 0%, #1a1a24 0%, #050505 80%);
+    border: 1px solid #333;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* Geometric corners */
+.card::before, .card::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #555;
+}
+.card::before { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.card::after { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+/* Watermark */
+.card-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 350px;
+    color: rgba(255, 255, 255, 0.02);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* All text should sit above the watermark */
+.card-header, .card-rank, .card-info, .card-principles, .card-footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #e0e0e0;
+}
+
+.brand .symbol { color: #888; }
+
+.motto {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+/* Rank */
+.card-rank {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.card-rank {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.rank-symbol {
+    color: #c0c0c0;
+    margin-right: 10px;
+}
+
+/* Info Grid */
+.card-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 2px solid #555;
+}
+
+.info-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #e0e0e0;
+    text-transform: uppercase;
+}
+
+/* Principles */
+.card-principles {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.principles-title {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.principles-list {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #aaa;
+}
+
+.principles-list .dot {
+    color: #444;
+    margin: 0 8px;
+}
+
+/* Footer */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+.footer-quote {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #888;
+    font-style: italic;
+}
+
+.footer-signature {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #c0c0c0;
+  }
+               
